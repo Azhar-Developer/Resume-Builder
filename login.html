@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login</title>
+  <base target="_top">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> 
+
+  <style > 
+  
+
+    .card {
+      width: 400px;
+      margin: auto;
+      margin-top: 50px;
+    }
+
+    .input-group-text {
+      width: 100px;
+      display: inline-block;
+    }
+
+    .mycolor {
+      background-color: #3a67b1; 
+    }
+
+    .color {
+      color: #3a67b1; 
+    }
+
+    .img {
+      width: 60px;
+      margin: auto;
+      display: inline-block;
+    }
+  </style>  
+</head>
+
+<body>
+
+
+  <div id="DivLogin" class="card shadow rounded-4 rounded my-animation">
+
+   <center>
+    <h5 class="card-header bg-secondary- text-white p-3 mycolor">Login portal</h5></center>
+    <a style="display:none" id="myid" href="<?= myURL(); ?>" target="_top">Link</a>
+    <div class="card-body p-4">
+
+      <center>
+        <i class="bi bi-person-circle fs-1 color"></i>
+      </center>
+      <br>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" >User</span>
+        <input type="text" class="form-control" id="uid" required placeholder="User ID" onchange="ClearText()">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" >Password</span>
+        <input type="password" class="form-control" id="pass" required placeholder="Password" onchange="ClearText()" >
+      </div>
+      <br>
+
+      <div id="RetMsg" class="alert alert-danger " style="display:none" role="alert"> </div>
+
+
+
+
+      <button type="button" onclick="login()"  class="btn btn-primary- mycolor float-end px-5 text-white" >Login</button>
+
+     <button type="button" class="btn btn-link" onclick="OpenRegisterPage()">(New User)</button>
+
+      
+
+    </div>
+
+    <form >
+  </div>
+  
+  <div id="DivRegister"></div>
+  
+    <script>
+    function login() {
+    var username = document.getElementById("uid").value;
+    var password = document.getElementById("pass").value;
+    
+    google.script.run.withSuccessHandler(function(response) {
+    
+      if (response === "success") {
+      document.getElementById("myid").click();
+      } else {
+        $("#RetMsg").removeClass("alert-danger").removeClass("alert-success").addClass("alert-danger");
+        $("#RetMsg").html("Invalid User ID or Password");
+        $("#RetMsg").show();
+      }
+      }).loginUser(username, password);
+    }
+
+
+  function ClearText()
+  {
+      $('#RetMsg').html("");
+      $('#RetMsg').hide();
+      $('#RetMsgReg').html("");
+      $('#RetMsgReg').hide();
+  }
+
+  function OpenRegisterPage()
+  {
+        google.script.run.withSuccessHandler(ShowRegister).OpenPage("register");
+  }
+  function ShowRegister(data)
+  {
+    $('#DivLogin').hide();
+    $('#DivRegister').html(data);
+  }
+
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQ5SNBFVJE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CQ5SNBFVJE');
+</script>
+
+</body>
+
+</html>
