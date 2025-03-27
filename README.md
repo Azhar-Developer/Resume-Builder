@@ -38,3 +38,5 @@ This project is licensed under the MIT License.
 ---
 ✨ Happy coding!
 
+© 2025 [Azhar-Developer](https://azhar.25official.com). All Rights Reserved.
+
