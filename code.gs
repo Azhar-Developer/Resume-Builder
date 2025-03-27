@@ -99,9 +99,9 @@ function UserRegister(pUID, pPassword, pName) {
 }
 // Templates
 var templates = {
-  "Template1": { id: 'template 1 id' },
-  "Template2": { id: 'template 2 id' },
-  "Template3": { id: 'template 3 id' }
+  "Template1": { id: 'replace with template 1 id' },
+  "Template2": { id: 'replace with template 2 id' },
+  "Template3": { id: 'replace with template 3 id' }
 };
 
 // Function to update the live preview
@@ -157,7 +157,7 @@ function getUpdatedPreview(formData, selectedTemplate) {
   return templateText.replace(/\n/g, '<br>'); // Return HTML-friendly text
 }
 function processForm(formData, selectedTemplate) {
-  const folderId = 'folder id'; // Replace with your actual Google Drive Folder ID
+  const folderId = 'replace with folder id'; // Replace with your actual Google Drive Folder ID
   const templateId = templates[selectedTemplate].id;
   
   // Create a copy of the selected template
