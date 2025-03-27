@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Builder</title>
+
+    <!-- bootstrap css cdn link  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+
+    <!-- custom css file -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap icon cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+
+    <!-- for adding animation to website we have use AOS library 
+    AOS Library css file cdn link -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+      /* appling google font over the website  */
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+}
+/* styling menu icon */
+.nav-menu{
+    border: none;
+    background-color: #fff;
+    font-size: 1.5rem;
+    color: #fca61f;
+}
+/* styling navbar links  */
+.navbar-nav a{
+    color: black;
+    position: relative;
+}
+.navbar-nav a:hover{
+    color: #fca61f;
+}
+.navbar-nav a:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    top: 35px;
+    position: absolute;
+    background: #fca61f;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+.navbar-nav a:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }
+  /* styling contact btn  */
+.c-btn{
+    border: none;
+    background: #fca61f;
+    color: #fff;
+    font-size: 1.2rem;
+}
+/* styling home section starts */
+.home{
+    background: linear-gradient(33deg, rgba(242,242,255,1) 0%, rgba(235,249,255,1) 100%);
+    padding: 30px 0px 10px 0px;
+}
+.home h2{
+    font-size: 3rem;
+    line-height: 4rem;
+}
+.c-orange{
+    color: #6f34fe;
+    font-weight: 700;
+    font-size: 4rem;
+}
+.home p{
+    width: fit-content;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+.h-btn:hover{
+    background: #6f34fe;
+    color: #fff;
+    transform: translateY(-20px);
+    transition-duration: 1s;
+}
+.link{
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #fca61f;
+    position: relative;
+}
+.link::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    top: 20px;
+    background-color: #6f34fe;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.link:hover{
+    color: #6f34fe;
+}
+.link:hover::after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+/* adding animation to home section image  */
+.home img{
+    animation: floatimg 4s ease-in-out infinite;
+}
+
+@keyframes floatimg {
+    0%{
+        transform: translateX(0);
+    }
+    50%{
+        transform: translateX(-24px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+/* expertise section starts */
+.heading small{
+    color: #6f34fe;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.heading h3{
+    margin-top: 0.5rem;
+    color: #3f396d;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.expertise h4{
+    color: #3f396d;
+    font-weight: 700;
+}
+.expertise a{
+    text-decoration: none;
+    color: #fca61f;
+}
+.expertise a:hover{
+    color: #6f34fe;
+}
+.expertise .service-card{
+    text-align: center;
+    padding: 15px 15px;
+    border-radius: 0.7rem;
+}
+
+/* skill section starts */
+.skill{
+    background-color: rgb(234, 234, 249);
+}
+.progress-card{
+    padding: 12% 10% 10% 15%;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 10%;
+}
+.progress-card:hover{
+    transform: scale(1.1,1.1);
+    transition-duration: 0.6s;
+}
+.circular-progress{
+    position: relative;
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    background: conic-gradient(#7d2ae8 3.6deg, #ededed 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circular-progress::before{
+    content: "";
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.progress-value{
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.html-progress{
+    color: #fca61f;
+}
+.javascript-progress{
+    color: #6f34fe;
+}
+.php-progress{
+    color: #20c997;
+}
+.reactjs-progress{
+    color: #3f396d;
+}
+.text{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.heading p{
+    font-size: 1.3rem;
+}
+
+/* portfolio section starts */
+#myBtnContainer{
+    margin-bottom: 45px;
+}
+#myBtnContainer button{
+  border: none;
+  color: black;
+  background: transparent;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;   
+  display: inline-block;
+  margin: 0 25px;
+}
+#myBtnContainer button:hover{
+    color: #fca61f;
+}
+
+#myBtnContainer button:focus{
+    outline: none;
+}
+.post .content h4{
+    font-size: 1rem;
+    font-weight: 700;
+}
+.post .card{
+    border: none;
+}
+
+/* testimonial section starts */
+.testimonial img:hover{
+    transform: scale(1.2,1.2);
+    transition-duration: 1s;
+}
+.testimonial h4{
+    color: #3f396d;
+}
+.testimonial i{
+    font-size: 2.9rem;
+    color: #fca61f;
+    
+}
+.testimonial .nextprev-btn{
+    border: none;
+    background-color: #fff;
+}
+.prev:hover,.prev-btn:hover{
+    color:#6f34fe;
+    transform: translateX(-10px);
+    transition-duration: 1s;
+}
+.next:hover,.next-btn:hover{
+    color:#6f34fe;
+    transform: translateX(10px);
+    transition-duration: 1s;
+}
+
+
+/* styling modal group  */
+.btn-c{
+    margin-left: 94%;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    margin-top: -3%;
+}
+.btn-c i{
+    color: #fca61f;
+}
+.modal-body .content span{
+    font-size: 1rem;
+}
+.modal-body .content small{
+    font-size: 1rem;
+    color: #6f34fe;
+}
+/* contact section starts */
+.contact{
+    background-color: #f3f3f3;
+}
+.contact-details i{
+    font-size: 1.5rem;
+    color: #fca61f;
+}
+.contact-details p{
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+.contact-form .form-control:focus{
+    box-shadow: none;
+    border: 1px solid #fca61f;
+}
+.contact-form .form-control{
+    padding: 10px 10px;
+    width: 80%;
+}
+
+/* footer section starts */
+footer{
+    background-color: #211e39;
+}
+
+footer .link-group a{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+footer .link-group a:hover{
+    color: #fca61f;
+}
+.social-links button{
+    border: none;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    background-color: #fff;
+    padding: 14px 15px 10px 15px;
+}
+.social-links .dribble{
+    color: #f33a7e;
+}
+.social-links button:hover{
+    color: #fff;
+    transform: translateY(-20px);
+    transition-duration: 1s;
+}
+.social-links .dribble:hover{
+    background-color: #f33a7e;
+}
+.social-links .whatsapp{
+    color: #25D366;
+}
+.social-links .whatsapp:hover{
+    background-color: #25D366;
+}
+.social-links .behance{
+    color: #255afc;
+}
+.social-links .behance:hover{
+    background-color: #255afc;
+}
+
+/* styling back to top button */
+#btn-back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: none;
+    font-size: 1.4rem;
+    background-color: #fca61f;
+    color: #fff;
+    animation: pulse 3s infinite;
+}
+</style>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f9;
+    }
+
+  
+    .form-container {
+      width: 50%;
+      overflow-y: auto;
+      background-color: #f8f9fa;
+      padding: 2rem;
+    }
+
+    .preview-container {
+      width: 50%;
+      background-color: white;
+      border-left: 1px solid #dee2e6;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .preview-container h2 {
+      margin-bottom: 1rem;
+    }
+
+    .cv-form-row-title {
+      background-color: #1e2532;
+      padding: 0.8rem 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .cv-form-row-title h3 {
+      color: #fff;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 1.7rem;
+    }
+
+    .cv-form-row {
+      padding: 3rem 2rem 0 2rem;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .form-elem {
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      color: #1e2532;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+      border-radius: none;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      padding: 0.8rem 1.6rem;
+      font-family: inherit;
+      width: 100%;
+      outline: 0;
+      transition: all 300ms ease-in-out;
+    }
+
+    .form-control:focus {
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .cols-3, .cols-2 {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .cols-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cols-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .repeater-add-btn {
+      width: 25px;
+      height: 25px;
+      background-color: #1170CD;
+      font-size: 1.6rem;
+      color: #fff;
+      margin: 1rem 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    .repeater-remove-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 999;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: #ca0b00;
+      color: #fff;
+      font-size: 1.6rem;
+      border: none;
+      cursor: pointer;
+    }
+    .preview-container {
+  width: 50%;
+  background-color: white;
+  border-left: 1px solid #dee2e6;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+#templatePreview {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.main-container {
+  display: none; /* Hide the main container by default */
+  flex: 1;
+  overflow: hidden;
+}
+
+    .form-container {
+      width: 50%;
+      overflow-y: auto;
+      background-color: #f8f9fa;
+      padding: 2rem;
+    }
+
+    </style>
+
+    <!-- jquery cdn link  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+     <script>
+    
+    function logout()
+    {
+      google.script.run.withSuccessHandler(AfterLogOut).logoutUser();
+    }
+    function AfterLogOut()
+    {
+         document.getElementById("myid").click();
+    }
+
+  </script>
+  </head>
+  <body>
+    <!-- navbar starts -->
+    <nav
+      id="navbar-top"
+      class="navbar navbar-expand-lg navbar-light bg-white sticky-top"
+    >
+      <div class="container-fluid px-5">
+        <a class="navbar-brand fw-bold fs-2" href="#" style="color: #3f396d"
+          >Resume Builder</a
+        >
+        <button
+          class="nav-menu d-md-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <i class="bi bi-menu-button-fill"></i>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav gap-4" style="font-size: 1.1rem">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#" onclick="goToHome()">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#service">Service</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#portfolio">Templates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonial">Testimonials</a>
+            </li>
+            
+          </ul>
+        <button class="c-btn h-btn mt-3 py-3 px-5 rounded-pill" type="button" onclick="logout()">Log Out</button>
+  <a style="display:none" id="myid" href="<?= myURL(); ?>" target="_top">Link</a>
+    </nav>
+    <!-- navbar ends here -->
+
+    <!-- Main Container -->
+  <div class="main-container" id="mainContainer" style="display: none;">
+    <!-- Scrollable Form Section -->
+    <div class="form-container">
+      <form id="cv-form" class="cv-form">
+        <!-- Template Selection -->
+        <div class="cv-form-blk">
+          <div class="cv-form-row-title">
+            <h3>Template Selection</h3>
+          </div>
+          <div class="cv-form-row">
+            <div class="form-elem">
+              <label for="template" class="form-label">Select Template</label>
+              <select id="template" name="template" class="form-control" required onchange="updatePreview()">
+                <option value="">Choose a template</option>
+                <option value="Template1">Professional Template</option>
+                <option value="Template2">Simple Template</option>
+                <option value="Template3">Creative Template</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="cv-form-blk">
+          <div class="cv-form-row-title">
+            <h3>About Section</h3>
+          </div>
+          <div class="cv-form-row cv-form-row-about">
+            <div class="cols-3">
+              <div class="form-elem">
+                <label for="firstname" class="form-label">First Name</label>
+                <input name="firstname" type="text" class="form-control firstname" oninput="updatePreview()" placeholder="e.g. John">
+              </div>
+              <div class="form-elem">
+                <label for="lastname" class="form-label">Last Name</label>
+                <input name="lastname" type="text" class="form-control lastname" oninput="updatePreview()" placeholder="e.g. Doe">
+              </div>
+            </div>
+
+            <div class="cols-3">
+              <div class="form-elem">
+                <label for="image" class="form-label">Your Image</label>
+                <input name="image" type="file" class="form-control image" accept="image/*" onchange="updatePreview()">
+              </div>
+              <div class="form-elem">
+                <label for="designation" class="form-label">Designation</label>
+                <input name="designation" type="text" class="form-control designation" oninput="updatePreview()" placeholder="e.g. Sr.Accountants">
+              </div>
+              <div class="form-elem">
+                <label for="address" class="form-label">Address</label>
+                <input name="address" type="text" class="form-control address" oninput="updatePreview()" placeholder="e.g. Lake Street-23">
+              </div>
+            </div>
+
+            <div class="cols-3">
+              <div class="form-elem">
+                <label for="email" class="form-label">Email</label>
+                <input name="email" type="text" class="form-control email" oninput="updatePreview()" placeholder="e.g. johndoe@gmail.com">
+              </div>
+              <div class="form-elem">
+                <label for="phoneno" class="form-label">Phone No:</label>
+                <input name="phoneno" type="text" class="form-control phoneno" oninput="updatePreview()" placeholder="e.g. 456-768-798, 567.654.002">
+              </div>
+              <div class="form-elem">
+                <label for="summary" class="form-label">Summary</label>
+                <input name="summary" type="text" class="form-control summary" oninput="updatePreview()" placeholder="e.g. Doe">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievements Section -->
+        <div class="cv-form-blk">
+          <div class="cv-form-row-title">
+            <h3>Achievements</h3>
+          </div>
+          <div class="row-separator repeater">
+            <div class="repeater" data-repeater-list="group-a">
+              <div data-repeater-item>
+                <div class="cv-form-row cv-form-row-achievement">
+                  <div class="cols-2">
+                    <div class="form-elem">
+                      <label for="achieve_title" class="form-label">Title</label>
+                      <input name="achieve_title" type="text" class="form-control achieve_title" oninput="updatePreview()" placeholder="e.g. Award Title">
+                    </div>
+                    <div class="form-elem">
+                      <label for="achieve_description" class="form-label">Description</label>
+                      <input name="achieve_description" type="text" class="form-control achieve_description" oninput="updatePreview()" placeholder="e.g. Description of the achievement">
+                    </div>
+                  </div>
+                  <button data-repeater-delete type="button" class="repeater-remove-btn">-</button>
+                </div>
+              </div>
+            </div>
+            <button type="button" data-repeater-create value="Add" class="repeater-add-btn">+</button>
+          </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="cv-form-blk">
+          <div class="cv-form-row-title">
+            <h3>Experience</h3>
+          </div>
+          <div class="row-separator repeater">
+            <div class="repeater" data-repeater-list="group-b">
+              <div data-repeater-item>
+                <div class="cv-form-row cv-form-row-experience">
+                  <div class="cols-3">
+                    <div class="form-elem">
+                      <label for="exp_title" class="form-label">Title</label>
+                      <input name="exp_title" type="text" class="form-control exp_title" oninput="updatePreview()">
+                    </div>
+                    <div class="form-elem">
+                      <label for="exp_organization" class="form-label">Company / Organization</label>
+                      <input name="exp_organization" type="text" class="form-control exp_organization" oninput="updatePreview()">
+                    </div>
+                    <div class="form-elem">
+                      <label for="exp_location" class="form-label">Location</label>
+                      <input name="exp_location" type="text" class="form-control exp_location" oninput="updatePreview()">
+                    </div>
+                  </div>
+
+                  <div class="cols-3">
+                    <div class="form-elem">
+                      <label for="exp_start_date" class="form-label">Start Date</label>
+                      <input name="exp_start_date" type="date" class="form-control exp_start_date" oninput="updatePreview()">
+                    </div>
+                    <div class="form-elem">
+                      <label for="exp_end_date" class="form-label">End Date</label>
+                      <input name="exp_end_date" type="date" class="form-control exp_end_date" oninput="updatePreview()">
+                    </div>
+                    <div class="form-elem">
+                      <label for="exp_description" class="form-label">Description</label>
+                      <input name="exp_description" type="text" class="form-control exp_description" oninput="updatePreview()">
+                    </div>
+                  </div>
+                  <button data-repeater-delete type="button" class="repeater-remove-btn">-</button>
+                </div>
+              </div>
+            </div>
+            <button type="button" data-repeater-create value="Add" class="repeater-add-btn">+</button>
+          </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="cv-form-blk">
+          <div class="cv-form-row-title">
+            <h3>Education</h3>
+          </div>
+          <div class="row-separator repeater">
+            <div class="repeater" data-repeater-list="group-c">
+              <div data-repeater-item>
+                <div class="cv-form-row cv-form-row-experience">
+                  <div class="cols-3">
+                    <div class="form-elem">
+                      <label for="edu_school" class="form-label">School</label>
+                      <input name="edu_school" type="text" class="form-control edu_school" oninput="updatePreview()">
+                    </div>
+                    <div class="form-elem">
+                      <label for="edu_degree" class="form-label">Degree</label>
+                      <input name="edu_degree" type="text" class="form-control edu_degree" oninput="updatePreview()">
+                    </div>
+                    <div class="form-elem">
+                      <label for="edu_city" class="form-label">City</label>
+                      <input name="edu_city" type="text" class="form-control edu_city" oninput="updatePreview()">
+                    </div>
+                  </div>
+
+                  <div class="cols-3">
+                    <div class="form-elem">
+                      <label for="edu_start_date" class="form-label">Start Date</label>
+                      <input name="edu_start_date" type="date" class="form-control edu_start_date" oninput="updatePreview()">
+                    </div>
+                    <div class="form-elem">
+                      <label for="edu_graduation_date" class="form-label">End Date</label>
+                      <input name="edu_graduation_date" type="date" class="form-control edu_graduation_date" oninput="updatePreview()">
+                    </div>
+                    <div class="form-elem">
+                      <label for="edu_description" class="form-label">Description</label>
+                      <input name="edu_description" type="text" class="form-control edu_description" oninput="updatePreview()">
+                    </div>
+                  </div>
+                  <button data-repeater-delete type="button" class="repeater-remove-btn">-</button>
+                </div>
+              </div>
+            </div>
+            <button type="button" data-repeater-create value="Add" class="repeater-add-btn">+</button>
+          </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="cv-form-blk">
+          <div class="cv-form-row-title">
+            <h3>Projects</h3>
+          </div>
+          <div class="row-separator repeater">
+            <div class="repeater" data-repeater-list="group-d">
+              <div data-repeater-item>
+                <div class="cv-form-row cv-form-row-experience">
+                  <div class="cols-3">
+                    <div class="form-elem">
+                      <label for="proj_title" class="form-label">Project Name</label>
+                      <input name="proj_title" type="text" class="form-control proj_title" oninput="updatePreview()">
+                    </div>
+                    <div class="form-elem">
+                      <label for="proj_link" class="form-label">Project Link</label>
+                      <input name="proj_link" type="text" class="form-control proj_link" oninput="updatePreview()">
+                    </div>
+                    <div class="form-elem">
+                      <label for="proj_description" class="form-label">Description</label>
+                      <input name="proj_description" type="text" class="form-control proj_description" oninput="updatePreview()">
+                    </div>
+                  </div>
+                  <button data-repeater-delete type="button" class="repeater-remove-btn">-</button>
+                </div>
+              </div>
+            </div>
+            <button type="button" data-repeater-create value="Add" class="repeater-add-btn">+</button>
+          </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="cv-form-blk">
+          <div class="cv-form-row-title">
+            <h3>Skills</h3>
+          </div>
+          <div class="row-separator repeater">
+            <div class="repeater" data-repeater-list="group-e">
+              <div data-repeater-item>
+                <div class="cv-form-row cv-form-row-skills">
+                  <div class="form-elem">
+                    <label for="skill" class="form-label">Skill</label>
+                    <input name="skill" type="text" class="form-control skill" oninput="updatePreview()">
+                  </div>
+                  <button data-repeater-delete type="button" class="repeater-remove-btn">-</button>
+                </div>
+              </div>
+            </div>
+            <button type="button" data-repeater-create value="Add" class="repeater-add-btn">+</button>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="cv-form-blk">
+          <button type="submit" class="btn btn-primary w-100">Generate Resume</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Fixed-Size Preview Section -->
+    <div class="preview-container">
+      <h2>Live Preview</h2>
+      <div id="templatePreview" class="p-3 text-muted">
+        <!-- Updated template preview will appear here -->
+        Your resume preview will update here.
+      </div>
+    </div>
+  </div>
+
+    <!-- home section starts  -->
+    <section class="home pt-5 pb-5" id="home">
+      <div class="row justify-content-evenly align-middle">
+        <!-- here data-aos is used for adding aos animation  -->
+        <div class="col-10 col-md-6 text-center text-md-start" data-aos="slide-right">
+          <h2 style="color: #3f396d">
+            Build a Professional Resume in Minutes! <br /><span class="c-orange"></span>
+          </h2>
+          <p class="text-muted">
+            Crafting a compelling resume has never been easier! Our AI-powered resume builder helps you create job-winning resumes in just a few clicks. Whether you're a fresh graduate or an experienced professional, our platform offers sleek, customizable templates that highlight your skills and achievements.
+          </p>
+          <button class="c-btn h-btn mt-3 py-3 px-5 rounded-pill" onclick="showForm()">
+  Get Started
+</button>
+          <a href="" class="link ms-4 d-none">See My Work</a>
+        </div>
+        <div class="col-10 col-md-4 d-none d-md-block">
+          <img src="https://media-hosting.imagekit.io//403512b450b44aad/banner-01.webp?Expires=1835671839&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=1V61r2-oSmeZ9CtjB3Hsh9AWg9eucCp26OeV~D5OeIHcqa1tLbYKoumn~bYNj31ceCZhgsFlpzsUI~ZFgMjdYGW~Etbef0L1uTTkBsZ0yuYf7LepJRN1MxCV9adZUAo0E-nk~2PKbS0NoJ~PtNYTrGNuYhHiSTsCJG6SiNcW0Ewnlo4a3vW4VcKGAH29T56Vb~CABpyqKMjaSJcRPI8IOA0Ci1lG4D2nXLuLHRT73dYe4-ZyQaHZsLKGgm~vOUhgAuaLIh7OE7XUzTdYcexR2jwdlLcUgM1CYXbLnkM1Uyu9dmlNWjRhDSM8DiNgMp5WI7fj8yji0vm~NesqBvVbYA__" class="img-fluid" alt="" />
+        </div>
+      </div>
+    </section>
+    <!-- home section ends here -->
+
+    <!-- expertise section starts -->
+    <section class="expertise mt-5" id="service">
+      <div class="heading text-center">
+        <small>Services</small>
+        <h3>
+          Provide Wide Range of <br />
+           Services
+        </h3>
+      </div>
+      <div class="row justify-content-evenly mt-5">
+        <div class="col-10 col-md-4" data-aos="fade-up">
+          <div class="service-card">
+            <div class="img">
+              <img
+                src="https://media-hosting.imagekit.io//339ea4f77502494b/service-icon1.png?Expires=1835672116&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=rjHeZr1hQYPCSx0IWmZ5A-HOjpoiPXZjGFGQ~kxT3~m0gGaO9pL0MBn7LdbuH~xkXsWhR9u2IeJPjADw3mDi1TEAACYPn6kxzUaM4lFoJb3qt3l8hFZK-DjfOInDaRpFlx6RuQOaXD5sWnchnc2o~Lo1p04UIwITG8HqTeVM2MVo2CLFTO1e87gwAziC7E~fRuzj3pBxoLajqPCMJGMeuunLhnXHnH8YUrO9oIyNzyyQAXB4H4me8XQGO06yavnuwvBNwni9v-S-5RSbeihf4Z-GzOjrpOPv~L~7LkT5h~hDTXHzIHcgXI0O7Zt6ppKQ3E4MxB-xLT2hE6cL9HK-5A__"
+                class="w-25 img-fluid img"
+                alt=""
+              />
+            </div>
+            <div class="content mt-3">
+              <h4>ATS Optimization</h4>
+              <p class="text-muted">
+                Ensure your resume passes applicant tracking systems (ATS) with keyword-rich formatting and professional designs that increase your chances of getting noticed by recruiters.
+              </p>
+              <a href="#" class="read-more-btn link">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-10" data-aos="fade-up">
+          <div class="service-card">
+            <div class="img">
+              <img
+                src="https://media-hosting.imagekit.io//e0978f5cb4984556/service-icon2.png?Expires=1835672142&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=MhM0Ku80HD7QaX2m5CNYs7fu6Tq72RPqnMqrEe35uqjhGfQto~CpH8R5Izk0oWcFY~PmggXOMQWvaaxXOS-oUzMPekjSQZIYS6pR~yphWw2Dh9oWhEb0e4mgexkKWl--iTyXTwLP~UqOfKQLj~6qFSXHuKIHVAECYtzVvL9fbiZmE3KugstJJoKOQE83mwZA8KXYWUDAlzkYMvY617zU4GeurDfontZB45BeF3j-tVUX93A~w4i0t0VMXvlByoIqJMlQ0TP0QqMCRLfhrnZSIACmG-oYFBfurH5DdlteyR0V0r7bAZmRCSNPa0Lnjr~B03ZldmBRn2xUElw2yxCdfg__"
+                class="w-25 img-fluid img"
+                alt=""
+              />
+            </div>
+            <div class="content mt-3">
+              <h4>Template Selection</h4>
+              <p class="text-muted">
+                Multiple templates can be supported by assigning them unique keys and IDs.
+              </p>
+              <a href="#" class="read-more-btn link">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-10" data-aos="fade-up">
+          <div class="service-card">
+            <div class="img">
+              <img
+                src="https://media-hosting.imagekit.io//843f61f709e442a9/service-icon3.png?Expires=1835672172&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=UXVyhyenqsWqpOkwwZm5OP29BlZw7W1fd2I9R4lZWqf8g0jrb38B6nU1CmzLB0k6RGpKZ1yQKdymD8oOSN~1ZCNVLwkpnxTOSxhFnfLGdr-J~1lvSvthvytD29Mecjhm8vKMt30l8REFdRw0usRYvFnU8xYAQmJZPodLMJnZPSAMUU8UBWPXpQyYCTB0itgXWcKopqLnSffW~9pqkyd4lZ2kbAao-d5Py4VifhUoAQydn1RTwCfMIjAApumNvWrtknMDD~7HJYYW40xSpBzboI~JYUe-HDgAbgO-~~5OJ0Wky6wEi4Itt6ZXsFxwKkMQMdB2I3uBkq84bI9pMcBpjA__"
+                class="w-25 img-fluid img"
+                alt=""
+              />
+            </div>
+            <div class="content mt-3">
+              <h4>Resume Export to PDF</h4>
+              <p class="text-muted">
+                Automates creating and saving a PDF file and download it on any time.
+              </p>
+              <a href="#" class="read-more-btn link">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- expertise section ends here -->
+
+    <!-- skill section starts -->
+    <section class="skill mt-5 py-5" id="about">
+      <div class="row justify-content-evenly">
+        <div class="col-10 col-md-5 skill-with-progress" data-aos="slide-right">
+          <div class="row justify-content-evenly">
+            <div class="col-10 col-md-6">
+              <div class="progress-card ms-3 ms-md-0">
+                <div class="circular-progress html-css">
+                  <span class="progress-value html-progress">0%</span>
+                </div>
+                <br />
+                <span class="text">Beginner</span>
+              </div>
+            </div>
+            <div class="col-10 col-md-6 mt-4 mt-md-0">
+              <div class="progress-card ms-3 ms-md-0">
+                <div class="circular-progress javascript">
+                  <span class="progress-value javascript-progress">0%</span>
+                </div>
+                <br />
+                <span class="text">Intermediate</span>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-evenly mt-4">
+            <div class="col-10 col-md-6">
+              <div class="progress-card ms-3 ms-md-0">
+                <div class="circular-progress php">
+                  <span class="progress-value php-progress">0%</span>
+                </div>
+                <br />
+                <span class="text">Professional</span>
+              </div>
+            </div>
+            <div class="col-10 col-md-6 mt-4 mt-md-0">
+              <div class="progress-card ms-3  ms-md-0">
+                <div class="circular-progress reactjs">
+                  <span class="progress-value reactjs-progress">0%</span>
+                </div>
+                <br>
+                <span class="text">Expert</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-10 col-md-5 skill-detail" data-aos="slide-left">
+          <div class="heading mt-5 mt-md-3">
+            
+            <h3>Your Resume, Your Future</h3>
+            <p class="text-muted">
+              Your resume is more than a document—it’s your first step toward success. Craft a stunning, ATS-friendly resume in minutes with our easy-to-use builder. Stand out, get noticed, and land your dream job effortlessly!
+            </p>
+            <p class="text-muted">
+              Stand out from the competition with expertly designed templates and AI-powered suggestions. Create, customize, and download your resume effortlessly!
+            </p>
+            <button class="c-btn h-btn mt-3 py-3 px-5 rounded-pill" onclick="showForm()">
+  Get Started
+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- skill section end here -->
+
+    <!-- portfolio section starts here -->
+    <section class="portfolio" id="portfolio">
+      <div class="heading text-center pt-5">
+        <small>Templates</small>
+        <h3>Check My Templates</h3>
+      </div>
+
+      <div class="portfolio-body">
+        <div class="row justify-content-evenly px-4">
+          <div class="post col-md-4 game all col-10 mt-3 mt-md-0" data-aos="fade-up">
+            <div class="card">
+              <img src="https://media-hosting.imagekit.io//a8c40396befe4e37/Resume%201%20For%20Img_page-0001.jpg?Expires=1835870016&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Hme6T06q3BdN9EF6m-e0vG5wj1w5Q0TDE3WJ-b1oQnW1DRrHN~RR6QXWYSR077iHwXutHCfKZP9VReP~sPbdShHNN3krExpL3lHjws9FyMAQ22vlwvSiuo6eHhBZt1bgCBcLDtoe798lJKKDEPmGdKvqxdqH6H0U6ppGRU-9ORvtMHIim9mVAdoBTwU6ezb5frvFlU-Ekyz2IDfc93yCxxJcMQOGlSpLBQ64OzpAJgJ8aJREid6FddDzidqI2AaRMUxK8dz~rrCkN~SE2s567QwUPDeDNK5Q~kjSLkOpsbv~Tm6YZcNtJiY2uN79MkZFJZDkhmMI0O310PpRM8kWVA__" class="card-img-top" alt="..." />
+              <div class="card-body text-center">
+                <h4 class="card-title">Resume 1</h4>
+                <br />
+                <a href="#" class="link">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div class="post col-md-4 website all col-10 mt-3 mt-md-0" data-aos="fade-up">
+            <div class="card">
+              <img
+                src="https://media-hosting.imagekit.io//a4984e5016ce4555/kristi%2012.jpg?Expires=1835880622&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=g7ZRp0bTIARVJD8Gi8WDROqimPpOO~yxIZdVDEzTh4a-zTB-ufj9EU1Ocw9Lbc~shRG8dfvxnmbf6Fu40~vr3h60u0UHr3T7cIkmFe4ZD~aKhgm9GzOc79qmj6t4HL1lNqDk6Il0zQDf6ng54GJCrcsJ~lsnyWSvvoAwDOJW0CawANgRYo~rJLl0x1QF57y7K01-L-jiByGfgBzOKLxXOOkRknpJ7U1bOPlE-A-OdoMhyXcxyxHXAx2CznzzchAG-o6myOMkq7asvkg78rWohu9I44E4UAzN2FDQixkuWVCecTmf61rYd5bayV3X-o79cyw1Tj2nFhXMtjmc6KgBgQ__"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body text-center">
+                <h4 class="card-title">Resume 2</h4>
+                <br />
+                <a href="#" class="read-more-btn link">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div class="post col-md-4 webapp all col-10 mt-3 mt-md-0" data-aos="fade-up">
+            <div class="card">
+              <img src="https://media-hosting.imagekit.io//cc3a928e72f042be/Black%20and%20White%20Simple%20Business%20School%20Graduate%20Corporate%20Resume%20(1).jpg?Expires=1835880648&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=wavtmNfX6byFbPq~KW4tcklri70RL6oo8WLPHKSIK-kMe4mkvrjpCfpATMoGPToepA1RFiaBn8neU7wWaIi368igG0h1i1Nmm~65KpqDEz86qeKCIdwCQtHNn27IfWY969~MAxyQSj~~Hm2Mfm-mymeeF2AOd6Tb4jUjXlm0sFi116CHaIKZf1OdLw3KwOMnnkXpzb-yMRkR1iRJ3ljfuIFxNW7~9RcMkMpUZuwtUpXgdQ8VMZBMig~lqOThrtxrDiWh23YCywpXgi11KQgDlYt1JKdawFZi6OCbKdOnfQBnm7srjH1vhMZsivlYTOx2uBD6oXVRPMibovOKoRqINA__" class="card-img-top" alt="..." />
+              <div class="card-body text-center">
+                <h4 class="card-title">Resume 3</h4>
+                <br />
+                <a href="#" class="read-more-btn link">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+    </section>
+    <!-- portfolio section ends here -->
+
+    <!-- testimonial section starts  -->
+    <section class="testimonial mt-5 pt-5" id="testimonial">
+      <div class="row justify-content-evenly">
+        <div class="col-md-4 col-10" data-aos="slide-right">
+          <img src="https://media-hosting.imagekit.io//f3a1a90706ee41bb/tastimonials-img.png?Expires=1835672197&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=2fZOgIIlOT~F3AfOr64pFrYP2hN0nZKrQcuQ4Ce8E~A~F44qpcHyEjIEPBqrMByWSXFh-Es5Pd5NegSWcr5S-cLsSDMJJjcf0YIZTXonqdDmcokAFsDvD7Zq~64oc-SooGj-~bYfGYC2Uxp9pHAHgoMiaIinbf79ZJeavDpz-X7zEY9Vsq3PBOew7w0JuxXNmADyYa9R9vFmwT9Ht7A1~FRVIAjRMWRfM8xQfI38DFk-WG92gx~NhohVywRHRYxDiz-H2v34FrRCS0fjO4Lkn0uxFbBGOrn2ZGD~PfrSUAu50InqW2ZsLVnNUqskXFckrQGjg0XfU8eYBbmuEao5wQ__" class="img-fluid" alt="" />
+        </div>
+        <div class="col-md-6 col-10 mt-5" data-aos="slide-left">
+          <div class="heading">
+            <small>Testimonials</small>
+            <h3>Happy Clients Feedback</h3>
+            <!-- here we will use carousel element from bootstrap -->
+            <div
+              id="carouselExampleControls"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="row justify-content-evenly">
+                    <div class="col-2 text-center">
+                      <i class="bi bi-quote"></i>
+                    </div>
+                    <div class="col-10">
+                      <p class="text-muted">
+                        This resume builder helped me land my dream job in just a few weeks! The templates are sleek and easy to use.
+                      </p>
+                      <h4>Sathish</h4>
+                      <small class="fs-6 text-muted">Marketing Specialist</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row justify-content-evenly">
+                    <div class="col-2 text-center">
+                      <i class="bi bi-quote"></i>
+                    </div>
+                    <div class="col-10">
+                      <p class="text-muted">
+                        I was struggling to create a professional resume, but this tool made it so easy. The templates are modern, and the AI suggestions helped me highlight my skills perfectly!
+                      </p>
+                      <h4>Hari Haran P</h4>
+                      <small class="fs-6 text-muted">Software Engineer</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row justify-content-evenly">
+                    <div class="col-2 text-center">
+                      <i class="bi bi-quote"></i>
+                    </div>
+                    <div class="col-10">
+                      <p class="text-muted">
+                        "Thanks to this resume builder, I was able to create a standout resume in just a few minutes. The process was smooth, and I got my first interview within days!"
+                      </p>
+                      <h4>Yuvaraj R</h4>
+                      <small class="fs-6 text-muted">Graphic Designer</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="nextprev-btn rounded-pill prev-btn"
+                type="button"
+                data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev"
+              >
+                <i class="bi bi-arrow-left-circle-fill prev"></i>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="nextprev-btn rounded-pill next-btn"
+                type="button"
+                data-bs-target="#carouselExampleControls"
+                data-bs-slide="next"
+              >
+                <i class="bi bi-arrow-right-circle-fill next"></i>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- testimonial ends here -->
+
+    
+
+    <!-- contact section starts -->
+    <section class="contact py-5" id="contact">
+      <div class="heading text-center">
+        <small>Get in Touch</small>
+        <h3>Any Questions? Feel Free to Contact</h3>
+      </div>
+      <div class="row justify-content-evenly mt-5">
+        <div class="col-md-5 col-10 contact-details" data-aos="slide-right">
+          <div class="row justify-content-evenly">
+            <div class="col-1">
+              <i class="bi bi-geo-alt-fill"></i>
+            </div>
+            <div class="col-11">
+              <p>Tondairpet, Chennai, India</p>
+            </div>
+          </div>
+          <div class="row justify-content-evenly">
+            <div class="col-1">
+              <i class="bi bi-telephone-fill"></i>
+            </div>
+            <div class="col-11">
+              <p>+91 9988776655</p>
+            </div>
+          </div>
+          <div class="row justify-content-evenly">
+            <div class="col-1">
+              <i class="bi bi-send-fill"></i>
+            </div>
+            <div class="col-11">
+              <p>azhar.25official@gmail.com</p>
+            </div>
+          </div>
+          <div class="row justify-content-evenly">
+            <div class="col-1">
+              <i class="bi bi-globe-americas"></i>
+            </div>
+            <div class="col-11">
+              <p>resumebuilder.com</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 col-10 mt-3 mt-md-0" data-aos="slide-left">
+          <div class="contact-form">
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Name"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="E-mail"
+              />
+            </div>
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Mobile No."
+              />
+            </div>
+            <div class="mb-3">
+              <textarea
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                placeholder="Message"
+                rows="5"
+              ></textarea>
+            </div>
+            <button class="c-btn h-btn mt-3 py-3 px-5 rounded-pill">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- contact section ends here -->
+
+      <!-- now we will make back to top button when user click on it it will be redirected to top page  -->
+    <button
+      type="button"
+      class="btn btn-floating btn-lg rounded-pill"
+      id="btn-back-to-top"
+    >
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- footer section starts  -->
+    <footer class="text-center text-muted py-4">
+      <h3 class="text-white pt-4" data-aos="fade-up">Resume Builder</h3>
+      <div class="link-group mt-5" data-aos="fade-up">
+        <a href="#home">Home</a>
+        <div class="vr"></div>
+        <a href="#about">About</a>
+        <div class="vr"></div>
+        <a href="#service">Service</a>
+        <div class="vr"></div>
+        <a href="#portfolio">Templates</a>
+        <div class="vr"></div>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="social-links mt-5" data-aos="fade-up">
+        <button href="" class="rounded-pill dribble">
+          <i class="bi bi-dribbble"></i>
+        </button>
+        <button href="" class="rounded-pill whatsapp">
+          <i class="bi bi-whatsapp"></i>
+        </button>
+        <button href="" class="rounded-pill behance">
+          <i class="bi bi-behance"></i>
+        </button>
+      </div>
+      <hr class="text-muted my-4" />
+
+       
+
+
+      <p>Copyright 2025 Resume Builder | All Rights Reserved.</p>
+    </footer>
+    <!-- footer section ends here -->
+
+      <!-- bootstrap javascript cdn link  -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- AOS library javascript link  -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      // initializing AOS library
+      AOS.init({
+        duration: 1000,
+        offset: 50,
+      });
+    </script>
+    <!-- custom js file linking -->
+    <script src="js/script.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.js" integrity="sha512-bZAXvpVfp1+9AUHQzekEZaXclsgSlAeEnMJ6LfFAvjqYUVZfcuVXeQoN5LhD7Uw0Jy4NCY9q3kbdEXbwhZUmUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  $(document).ready(function () {
+    // Initialize the repeater plugin
+    $('.repeater').repeater({
+      initEmpty: false,
+      defaultValues: {
+        'text-input': ''
+      },
+      show: function () {
+        $(this).slideDown();
+      },
+      hide: function (deleteElement) {
+        $(this).slideUp(deleteElement);
+      },
+      isFirstItemUndeletable: true
+    });
+  });
+
+// Ensure the main container is hidden initially
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('mainContainer').style.display = 'none'; // Hide main container on page load
+});
+
+// Function to show only the main container when "Get Started" is clicked
+function showForm() {
+    document.getElementById('mainContainer').style.display = 'flex'; // Show main container
+    document.getElementById('home').style.display = 'none'; // Hide home section
+    document.getElementById('service').style.display = 'none'; // Hide service section
+    document.getElementById('about').style.display = 'none'; // Hide about section
+    document.getElementById('portfolio').style.display = 'none'; // Hide portfolio section
+    document.getElementById('testimonial').style.display = 'none'; // Hide testimonials section
+    document.getElementById('contact').style.display = 'none'; // Hide contact section
+}
+
+
+    function goToHome() {
+    document.getElementById('mainContainer').style.display = 'none'; // Hide main container
+    document.getElementById('home').style.display = 'block'; // Show home section
+    document.getElementById('service').style.display = 'block'; // Show service section
+    document.getElementById('about').style.display = 'block'; // Show about section
+    document.getElementById('portfolio').style.display = 'block'; // Show portfolio section
+    document.getElementById('testimonial').style.display = 'block'; // Show testimonials section
+    document.getElementById('contact').style.display = 'block'; // Show contact section
+}
+
+
+  // Function to update the live preview
+  function updatePreview() {
+  const formData = {
+    firstname: document.querySelector('.firstname').value || '',
+    lastname: document.querySelector('.lastname').value || '',
+    image: document.querySelector('.image').files[0] ? URL.createObjectURL(document.querySelector('.image').files[0]) : '',
+    designation: document.querySelector('.designation').value || '',
+    address: document.querySelector('.address').value || '',
+    email: document.querySelector('.email').value || '',
+    phoneno: document.querySelector('.phoneno').value || '',
+    summary: document.querySelector('.summary').value || '',
+    achievements: [],
+    experience: [],
+    education: [],
+    projects: [],
+    skills: []
+  };
+
+  // Collect achievements
+  document.querySelectorAll('[data-repeater-list="group-a"] [data-repeater-item]').forEach(item => {
+    formData.achievements.push({
+      title: item.querySelector('.achieve_title').value || '',
+      description: item.querySelector('.achieve_description').value || ''
+    });
+  });
+
+  // Collect experience
+  document.querySelectorAll('[data-repeater-list="group-b"] [data-repeater-item]').forEach(item => {
+    formData.experience.push({
+      title: item.querySelector('.exp_title').value || '',
+      organization: item.querySelector('.exp_organization').value || '',
+      location: item.querySelector('.exp_location').value || '',
+      startDate: item.querySelector('.exp_start_date').value || '',
+      endDate: item.querySelector('.exp_end_date').value || '',
+      description: item.querySelector('.exp_description').value || ''
+    });
+  });
+
+  // Collect education
+  document.querySelectorAll('[data-repeater-list="group-c"] [data-repeater-item]').forEach(item => {
+    formData.education.push({
+      school: item.querySelector('.edu_school').value || '',
+      degree: item.querySelector('.edu_degree').value || '',
+      city: item.querySelector('.edu_city').value || '',
+      startDate: item.querySelector('.edu_start_date').value || '',
+      graduationDate: item.querySelector('.edu_graduation_date').value || '',
+      description: item.querySelector('.edu_description').value || ''
+    });
+  });
+
+  // Collect projects
+  document.querySelectorAll('[data-repeater-list="group-d"] [data-repeater-item]').forEach(item => {
+    formData.projects.push({
+      title: item.querySelector('.proj_title').value || '',
+      link: item.querySelector('.proj_link').value || '',
+      description: item.querySelector('.proj_description').value || ''
+    });
+  });
+
+  // Collect skills
+  document.querySelectorAll('[data-repeater-list="group-e"] [data-repeater-item]').forEach(item => {
+    formData.skills.push(item.querySelector('.skill').value || '');
+  });
+
+  const selectedTemplate = document.getElementById('template').value;
+
+  if (selectedTemplate) {
+    google.script.run
+      .withSuccessHandler(updateLivePreview)
+      .getUpdatedPreview(formData, selectedTemplate);
+  }
+}
+
+function updateLivePreview(previewContent) {
+  document.getElementById('templatePreview').innerHTML = previewContent;
+}
+function getUpdatedPreview(formData, selectedTemplate) {
+  const templateId = templates[selectedTemplate].id;
+  const doc = DocumentApp.openById(templateId).getBody();
+  let templateText = doc.getText();
+
+  // Replace placeholders with form data
+  templateText = templateText
+    .replace('{{firstname}}', formData.firstname || 'Your First Name')
+    .replace('{{lastname}}', formData.lastname || 'Your Last Name')
+    .replace('{{designation}}', formData.designation || 'Your Designation')
+    .replace('{{address}}', formData.address || 'Your Address')
+    .replace('{{email}}', formData.email || 'your.email@example.com')
+    .replace('{{phoneno}}', formData.phoneno || '123-456-7890')
+    .replace('{{summary}}', formData.summary || 'A brief summary about yourself.');
+
+  // Handle arrays (e.g., achievements, experience, etc.)
+  if (formData.achievements && formData.achievements.length > 0) {
+    templateText = templateText.replace('{{achieve_title}}', formData.achievements.map(a => a.title).join(', '));
+    templateText = templateText.replace('{{achieve_description}}', formData.achievements.map(a => a.description).join(', '));
+  }
+
+  if (formData.experience && formData.experience.length > 0) {
+    templateText = templateText.replace('{{exp_title}}', formData.experience.map(e => e.title).join(', '));
+    templateText = templateText.replace('{{exp_organization}}', formData.experience.map(e => e.organization).join(', '));
+    templateText = templateText.replace('{{exp_location}}', formData.experience.map(e => e.location).join(', '));
+    templateText = templateText.replace('{{exp_start_date}}', formData.experience.map(e => e.startDate).join(', '));
+    templateText = templateText.replace('{{exp_end_date}}', formData.experience.map(e => e.endDate).join(', '));
+    templateText = templateText.replace('{{exp_description}}', formData.experience.map(e => e.description).join(', '));
+  }
+
+  // Return HTML-friendly text with styling
+  return `
+    <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
+      <h1 style="color: #1e2532;">${formData.firstname} ${formData.lastname}</h1>
+      <h2 style="color: #1170CD;">${formData.designation}</h2>
+      <p><strong>Address:</strong> ${formData.address}</p>
+      <p><strong>Email:</strong> ${formData.email}</p>
+      <p><strong>Phone:</strong> ${formData.phoneno}</p>
+      <p><strong>Summary:</strong> ${formData.summary}</p>
+      <h3 style="color: #1e2532;">Achievements</h3>
+      <ul>
+        ${formData.achievements.map(a => `<li><strong>${a.title}:</strong> ${a.description}</li>`).join('')}
+      </ul>
+      <h3 style="color: #1e2532;">Experience</h3>
+      ${formData.experience.map(e => `
+        <div>
+          <h4>${e.title} at ${e.organization}</h4>
+          <p>${e.location} | ${e.startDate} - ${e.endDate}</p>
+          <p>${e.description}</p>
+        </div>
+      `).join('')}
+      <h3 style="color: #1e2532;">Education</h3>
+      ${formData.education.map(edu => `
+        <div>
+          <h4>${edu.degree} at ${edu.school}</h4>
+          <p>${edu.city} | ${edu.startDate} - ${edu.graduationDate}</p>
+          <p>${edu.description}</p>
+        </div>
+      `).join('')}
+      <h3 style="color: #1e2532;">Projects</h3>
+      ${formData.projects.map(p => `
+        <div>
+          <h4>${p.title}</h4>
+          <p><a href="${p.link}">${p.link}</a></p>
+          <p>${p.description}</p>
+        </div>
+      `).join('')}
+      <h3 style="color: #1e2532;">Skills</h3>
+      <ul>
+        ${formData.skills.map(s => `<li>${s}</li>`).join('')}
+      </ul>
+    </div>
+  `;
+}
+  // Function to handle form submission
+ function handleFormSubmit(event) {
+  event.preventDefault();
+
+  const formData = {
+    firstname: document.querySelector('.firstname').value || '',
+    lastname: document.querySelector('.lastname').value || '',
+    designation: document.querySelector('.designation').value || '',
+    address: document.querySelector('.address').value || '',
+    email: document.querySelector('.email').value || '',
+    phoneno: document.querySelector('.phoneno').value || '',
+    summary: document.querySelector('.summary').value || '',
+    achievements: [],
+    experience: [],
+    education: [],
+    projects: [],
+    skills: [],
+    image: '' // This will hold the Base64 image
+  };
+
+  // Collect achievements
+  document.querySelectorAll('[data-repeater-list="group-a"] [data-repeater-item]').forEach(item => {
+    formData.achievements.push({
+      title: item.querySelector('.achieve_title').value || '',
+      description: item.querySelector('.achieve_description').value || ''
+    });
+  });
+
+  // Collect experience
+  document.querySelectorAll('[data-repeater-list="group-b"] [data-repeater-item]').forEach(item => {
+    formData.experience.push({
+      title: item.querySelector('.exp_title').value || '',
+      organization: item.querySelector('.exp_organization').value || '',
+      location: item.querySelector('.exp_location').value || '',
+      startDate: item.querySelector('.exp_start_date').value || '',
+      endDate: item.querySelector('.exp_end_date').value || '',
+      description: item.querySelector('.exp_description').value || ''
+    });
+  });
+
+  // Collect education
+  document.querySelectorAll('[data-repeater-list="group-c"] [data-repeater-item]').forEach(item => {
+    formData.education.push({
+      school: item.querySelector('.edu_school').value || '',
+      degree: item.querySelector('.edu_degree').value || '',
+      city: item.querySelector('.edu_city').value || '',
+      startDate: item.querySelector('.edu_start_date').value || '',
+      graduationDate: item.querySelector('.edu_graduation_date').value || '',
+      description: item.querySelector('.edu_description').value || ''
+    });
+  });
+
+  // Collect projects
+  document.querySelectorAll('[data-repeater-list="group-d"] [data-repeater-item]').forEach(item => {
+    formData.projects.push({
+      title: item.querySelector('.proj_title').value || '',
+      link: item.querySelector('.proj_link').value || '',
+      description: item.querySelector('.proj_description').value || ''
+    });
+  });
+
+  // Collect skills
+  document.querySelectorAll('[data-repeater-list="group-e"] [data-repeater-item]').forEach(item => {
+    formData.skills.push(item.querySelector('.skill').value || '');
+  });
+
+  // Process image upload (Convert to Base64)
+  const imageInput = document.querySelector('.image');
+  if (imageInput.files.length > 0) {
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      formData.image = reader.result; // Store Base64-encoded image
+      sendDataToGoogleScript(formData);
+    };
+    reader.readAsDataURL(imageInput.files[0]); // Convert image to Base64
+  } else {
+    sendDataToGoogleScript(formData);
+  }
+}
+
+// Function to send data to Google Apps Script
+function sendDataToGoogleScript(formData) {
+  const selectedTemplate = document.getElementById('template').value;
+
+  google.script.run
+    .withSuccessHandler(url => {
+      alert("Resume generated! Download from " + url);
+      window.open(url, '_blank');
+    })
+    .withFailureHandler(error => {
+      console.error("Error generating resume:", error);
+      alert("An error occurred while generating the resume. Please try again.");
+    })
+    .processForm(formData, selectedTemplate);
+}
+
+// Attach event listener to the form
+document.getElementById('cv-form').addEventListener('submit', handleFormSubmit);
+
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CQ5SNBFVJE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CQ5SNBFVJE');
+</script>
+    
+  </body>
+</html>
