@@ -1,0 +1,88 @@
+<div class="card shadow rounded-4 rounded ">
+  <center><h5 class="card-header bg-secondary- text-white p-3 mycolor">User Registration</h5></center>
+
+  <div class="card-body p-4">
+
+
+    <div id="RegBody">
+      <div class="input-group mb-3">
+        <span class="input-group-text" >User Name</span>
+        <input type="text" class="form-control" id="reg_uname" placeholder="User Name" onchange="ClearText()">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" >User ID</span>
+        <input type="text" class="form-control" id="reg_uid" placeholder="User ID" onchange="ClearText()">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" >Password</span>
+        <input type="password" class="form-control" id="reg_pass" placeholder="Password" onchange="ClearText()" >
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" >Re-enter</span>
+        <input type="password" class="form-control" id="reg_repass" placeholder="Re-enter Password" onchange="ClearText()" >
+      </div>
+    </div>
+
+    <div id="RetMsgReg" class="alert alert-danger " style="display:none" role="alert"> </div>
+
+    <button type="button" class="btn btn-primary- mycolor float-end px-5 text-white" onclick="Register()">Register</button>
+    <button type="button" class="btn btn-secondary" onclick="GoBackToLogin()">Back</button>
+
+  </div>
+</div>
+
+<script>
+  function Register()
+  {
+    
+    var unm    = document.getElementById("reg_uname").value.trim();
+    var uid    = document.getElementById("reg_uid").value.trim();
+    var pass   = document.getElementById("reg_pass").value.trim();
+    var repass = document.getElementById("reg_repass").value.trim();
+
+    if (pass != repass)
+    {
+      RegReturnMsg("danger,Password Not Matched...");
+    }
+    else
+    {
+      google.script.run.withSuccessHandler(RegReturnMsg).UserRegister(uid,pass,unm);
+    }
+    
+    
+  }
+  
+  function RegReturnMsg(data)
+  {
+      let v = data.split(",");
+      let type=v[0];
+
+      $('#RetMsgReg').removeClass("alert-success").removeClass("alert-danger").addClass("alert-"+type);
+      $('#RetMsgReg').html(v[1]);
+      $('#RetMsgReg').show();
+
+      if (type == 'success')
+      {
+        setTimeout(function(){  
+           document.getElementById("myid").click();
+           }, 3000);
+      }
+
+  }
+
+  function GoBackToLogin() {
+    $('#DivRegister').hide();
+    $('#DivLogin').show();
+  }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CQ5SNBFVJE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CQ5SNBFVJE');
+</script>
