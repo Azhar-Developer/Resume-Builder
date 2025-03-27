@@ -36,7 +36,6 @@ This project is licensed under the MIT License.
 - Inspired by various online resume builders.
 
 ---
-✨ Happy coding!
 
-© 2025 [Azhar-Developer](https://azhar.25official.com). All Rights Reserved.
+© 2025 [Azhar-Developer](https://azhar.25official@gmail.com). All Rights Reserved.
 
